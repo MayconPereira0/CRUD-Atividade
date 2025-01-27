@@ -1,5 +1,10 @@
 *{
     margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
 }
 
 header{
@@ -16,4 +21,42 @@ header{
     justify-content: space-between;
     margin-left: 5%;
 }
+
+.tela-login{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-login{
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: aqua;
+    width: 50%;
+    height: 400px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.container-img{
+    background-color: red;
+    width: 50%;
+    height: 100vh;
+}
+
+
 
