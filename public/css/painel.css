@@ -117,3 +117,28 @@ nav.gerenciamento-menu.expandir ul li.item-menu a .txt-link{
 } */
 
 
+/* SEÇÃO SELECIONADA - CLIENTE*/
+
+.cadastro-cliente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: blue; */
+}
+
+.card-cadastro{
+    width: 500px;
+    height: 400px;
+}
+
+.listar-cliente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: blue; */
+}
+
+
+
