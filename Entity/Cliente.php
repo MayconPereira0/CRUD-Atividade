@@ -1,27 +1,40 @@
 <?php
-require '../DB/Database.php'; // ALTERE SEU DIRETORIO CONFORME SALVO NO SEU LOCAL
+require_once '../DB/Database.php'; // ALTERE SEU DIRETORIO CONFORME SALVO NO SEU LOCAL
 
-class Usuario {
+class Cliente {
     private $id;
     private $nome;
     private $rg;
+    private $cpf;
+    private $cnpj;
     private $email;
+    private $telefone;
     private $genero;
     private $data_nascimento;
+    private $endereco_completo;
+    private $profissao;
 
     public function __construct($dados) {
-        $this->nome = $dados['nome'];
+        $this->nome = $dados['nome_completo'];
         $this->email = $dados['email'];
         $this->telefone = $dados['telefone'];
+        $this->cpf = $dados['cpf'];
+        $this->cnpj = $dados['cnpj'];
         $this->rg = $dados['rg'];
         $this->genero = $dados['genero'];
         $this->data_nascimento = $dados['data_nascimento'];
+        $this->endereco_completo = $dados['endereco_completo'];
+        $this->profissao = $dados['profissao'];
     }
 
     public function cadastrar() {
         $db = new Database('clientes');
         return $db->insert([
-            'nome' => $this->nome,
+            'nome_completo' => $this->nome,
+            'endereco_completo' => $this->endereco_completo,
+            'profissao' => $this->profissao,
+            'cpf' => $this->cpf,
+            'cnpj' => $this->cnpj,
             'email' => $this->email,
             'telefone' => $this->telefone,
             'rg' => $this->rg,
@@ -36,27 +49,29 @@ class Usuario {
     }
 
     public static function buscarPorId($id) {
-        $db = new Database('usuario');
-        $result = $db->select("id_usuario = {$id}");
-        return $result ? $result[0] : null;
+        $db = new Database('clientes');
+        $result = $db->select("id = {$id}");
+    
+        // Pegando o primeiro resultado como array associativo
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function excluir($id) {
-        $db = new Database('usuario');
-        return $db->delete("id_usuario = {$id}");
+        $db = new Database('clientes');
+        return $db->delete("id = {$id}");
     }
 
     public static function atualizar($id, $dados) {
-        $db = new Database('usuario');
-        return $db->update($dados, "id_usuario = {$id}");
+        $db = new Database('clientes');
+        return $db->update($dados, "id = {$id}");
     }
 
     public static function autenticar($email, $senha) {
-        $db = new Database('usuario');
-        $usuario = $db->select("email = '{$email}'")->fetch(PDO::FETCH_ASSOC);
+        $db = new Database('clientes');
+        $Cliente = $db->select("email = '{$email}'")->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario && password_verify($senha, $usuario['senha'])) {
-            return $usuario;
+        if ($Cliente && password_verify($senha, $Cliente['senha'])) {
+            return $Cliente;
         }
 
         return null;

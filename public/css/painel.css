@@ -1,144 +1,148 @@
-*{
+/* Reset de estilos */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* CABEÇALHO */
-
-body{
+body {
     height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-header{
+header {
     width: 100%;
     height: 80px;
-    background-color: rgb(172, 172, 172);
+    background-color: #acacac;
     display: flex;
     align-items: center;
     position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 0 20px;
 }
 
-.headnav{
+.headnav {
     display: flex;
     align-items: center;
-    margin: 15px;
+    gap: 15px;
 }
 
 /* MENU LATERAL */
-
-.btn-expandir{
-    /* width: 100%; */
-    padding-left: 80%;
-    /* background-color: red; */
-}
-
-.btn-expandir > i{
-    color: black;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-nav.gerenciamento-menu{
-    background-color: rgb(167, 167, 167);
+nav.gerenciamento-menu {
+    background-color: #a7a7a7;
     width: 250px;
     height: 50vh;
     margin-top: 10%;
-    padding: 10px 0 40px 1%;
     border-radius: 0px 12px 12px 0px;
     position: fixed;
     top: 0;
     left: 0;
-
+    transition: width 0.3s ease;
 }
 
-.container-menu{
-    margin-top: 8%;
-    margin-left: 10%;
+.container-menu {
+    margin-top: 20px;
+    /* padding-left: 20px; */
 }
 
-ul{
-    list-style-type:none;
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-ul li.item-menu a:hover{
-    background: #2b5ab9;
-    border-radius: 8px;
-}
-
-.container-menu ul {
-    margin-top: 8%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 90%;
-}
-
-ul li.item-menu a{
-    color: #000000;
+ul li.item-menu a {
+    color: #000;
     font-weight: 500;
     font-size: 16px;
-    padding: 15px 14px 15px 14px;
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: 0.3s;
+    padding: 10px 1px 10px 15px;
+    transition: 0.3s ease;
 }
 
-ul li.ativo{
+ul li.item-menu a:hover,
+ul li.ativo {
     background: #2b5ab9;
     border-radius: 8px;
 }
 
-/* icone menu */
-
-ul li.item-menu a .icon-menu i{
+/* Ícone do menu */
+ul li.item-menu a .icon-menu i {
     font-size: 20px;
-    margin-right: 25px;
+    margin-right: 15px;
 }
 
-/* expandir menu-lateral */
-
-nav.gerenciamento-menu.expandir{
-    width: 60px;
-    padding: 10px;
-    overflow: hidden;
+/* Botão expandir */
+.btn-expandir {
+    padding-left: 80%;
+    cursor: pointer;
 }
 
-nav.gerenciamento-menu.expandir ul li.item-menu a .txt-link{
-    font-size: 1px;
-    margin-left: 50px;
+.btn-expandir > i {
+    color: black;
+    font-size: 24px;
 }
 
-/* .item-menu{
-    width: 44px;
-    background-color: red;
-    overflow: hidden;
-    transition: 0.3s;
-} */
+/* Expansão do menu */
+nav.gerenciamento-menu.expandir {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+nav.gerenciamento-menu.expandir ul li.item-menu a .txt-link {
+    display: none;
+}
 
 
-/* SEÇÃO SELECIONADA - CLIENTE*/
+nav.gerenciamento-menu.expandir .submenu{
+    display: none;
+}
 
-.cadastro-cliente{
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.item-menu:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.submenu li a:hover {
+    background: #2b5ab9;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Seção Selecionada - Cliente */
+.cadastro-cliente,
+.listar-cliente {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    /* background-color: blue; */
+    padding-top: 5%;
 }
 
-.card-cadastro{
+.card-cadastro form {
     width: 500px;
-    height: 400px;
+    height: auto;
 }
 
-.listar-cliente{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.listar-cliente {
     height: 100vh;
-    /* background-color: blue; */
 }
-
-
-

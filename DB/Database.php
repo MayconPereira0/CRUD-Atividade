@@ -25,6 +25,10 @@ class Database{
         }
     }
 
+    public function beginTransaction() {
+        return $this->conn->beginTransaction();
+    }
+
     public function execute($query, $binds = []){
         //BINDS = SELECT 
         try{
@@ -96,6 +100,10 @@ class Database{
             return false;
         }
         
+    }
+
+    public function lastInsertId() {
+        return $this->conn->lastInsertId();
     }
 }
 

@@ -3,17 +3,21 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dados = [
-            'nome' => $_POST['nome'],
+            'nome_completo' => $_POST['nome'],
+            'endereco_completo' => $_POST['endereco_completo'],
+            'profissao' => $_POST['profissao'],
+            'cpf' => $_POST['cpf'],
+            'cnpj' => $_POST['cnpj'],
             'email' => $_POST['email'],
             'telefone' => $_POST['telefone'],
+            'rg' => $_POST['rg'],
             'genero' => $_POST['genero'],
             'data_nascimento' => $_POST['data_nascimento'],
-            'rg' => $_POST['rg'],
         ];
     
-        $usuario = new Usuario($dados);
+        $cliente = new Cliente($dados);
     
-        if ($usuario->cadastrar()) {
+        if ($cliente->cadastrar()) {
             echo '<script>alert("Usuário cadastrado com sucesso!");</script>';
             echo "<meta http-equiv='refresh' content='0.5;url=painel.php?pagina=cadastro_cliente' />"; 
         } else {
@@ -31,14 +35,22 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="card-cadastro">
-                    <form action="" method="POST">
+                <form action="" method="POST">
                         <div class="mb-3">
                             <label for="nome" class="labelInput">Nome completo:</label>
-                            <input type="text" id="nome" name="nome" class="form-control" required>
+                            <input type="text" id="nome" name="nome" class="form-control"required>
                         </div>
                         <div class="mb-3">
                             <label for="rg" class="labelInput">RG:</label>
                             <input type="text" id="rg" name="rg" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="labelInput">CPF:</label>
+                            <input type="text" id="cpf" name="cpf" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cnpj" class="labelInput">CNPJ:</label>
+                            <input type="text" id="cnpj" name="cnpj" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="labelInput">Email:</label>
@@ -46,14 +58,22 @@
                         </div>
                         <div class="mb-3">
                             <label for="telefone" class="labelInput">Telefone:</label>
-                            <input type="tel" id="telefone" name="telefone" class="form-control" required>
+                            <input type="tel" id="telefone" name="telefone" class="form-control"required>
                         </div>
                         <div class="mb-3">
-                        <p>Sexo:</p>
+                            <label for="endereco_completo" class="labelInput">Endereço completo:</label>
+                            <input type="text" id="endereco_completo" name="endereco_completo" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="profissao" class="labelInput">Profissão:</label>
+                            <input type="text" id="profissao" name="profissao" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <p>Sexo:</p>
                             <label for="feminino">Feminino</label>
-                            <input type="radio" id="feminino" name="genero" value="feminino" required>
+                            <input type="radio" id="feminino" name="genero" required>
                             <label for="masculino">Masculino</label>
-                            <input type="radio" id="masculino" name="genero" value="masculino" required>
+                            <input type="radio" id="masculino" name="genero" required>
                         </div>
                         <div class="mb-3">
                             <label for="data_nascimento">Data de nascimento:</label>
